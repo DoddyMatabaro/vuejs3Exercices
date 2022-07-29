@@ -41,7 +41,13 @@
             <div class="technology-section">
                     <h1>Technologies Studied</h1>
                     <div class="logos">
-                            
+                            <img src="../assets/css3.svg" alt=""> 
+                            <img src="../assets/html5-brands.svg" alt=""> 
+                            <img src="../assets/js-brands.svg" alt=""> 
+                            <img src="../assets/php-brands.svg" alt=""> 
+                            <img src="../assets/python-brands.svg" alt=""> 
+                            <img src="../assets/vuejs-brands.svg" alt=""> 
+                            <img src="../assets/react-brands.svg" alt=""> 
                     </div>
             </div>
        </div>
