@@ -1,5 +1,6 @@
 <template>
-    <div class="main-container">
+    <div class="wrapper">
+            <div class="main-container">
        <div class="container-one">
             <div class="profile">
                 <img src="../assets/profile.jpg" alt="" srcset="">
@@ -74,15 +75,21 @@
             </div>
        </div>
     </div>
+    </div>
 </template>
 <script>
 
 </script>
-<style>
+<style scoped>
+    .wrapper{
+        display: flex;
+        justify-content: center;
+    }
     .main-container{
         display: flex;
         flex-direction: row;
         background-color: grey;
+        width: 60%;
 
     }
 
@@ -144,5 +151,11 @@
    }
     img{
         height: 30px;
+    }
+
+    @media screen and (max-width: 789px){
+        .main-container{
+            width: 95%;
+        }
     }
 </style>
