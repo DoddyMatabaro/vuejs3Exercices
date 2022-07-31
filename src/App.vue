@@ -1,29 +1,24 @@
 <template>
-    <MainCard />
-    <ProjectData  />
+   <UserProfile />
 </template>
 
 <script>
-import MainCard from "./components/MainCard.vue"
-import ProjectData from "./components/ProjectsCard";
+import UserProfile from "./components/UserProfile.vue"
 
 export default {
   name: 'App',
   components: {
-    MainCard,
-    ProjectData
+    UserProfile,
 }
 }
 </script>
 
 <style>
   #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+      /* background-color: rgb(210, 205, 199); */
+  }
+  body{
+      background-color: rgb(210, 205, 199);
   }
    
 </style>
