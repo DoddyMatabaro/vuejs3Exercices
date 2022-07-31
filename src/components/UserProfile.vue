@@ -1,23 +1,50 @@
 <template>
     <div class="wrapper">
             <div class="user-card">
-                <strong>user name + fullname</strong>
+                <strong>{{user.username + " " + fullname}}`</strong>
                 <div class="function">
                     Admin
                 </div>
                 <div><strong>Followers : </strong>1</div>
+                <form class="create-twoot" @submit.prevent="createNewTwoot">
+                        <label for="newTwoot"><strong>New Twoot</strong></label>
+                        <textarea id="newTwoot" rows="4" v-model="newTwootContent" />
+                        <div class="create-twoot-type">
+                            <label for="newTwootType">
+                                Type : 
+                            </label>
+                            <select name="" id="newTwootType" v-model="selectedTwootType">
+                                <option :value="option.value"  v-for="(option, index) in twootsType" :key="index" >
+                                     {{option.name}}
+                                </option>
+                            </select>
+
+
+                        </div>
+                        <button>
+                            Twoot!
+                        </button>
+                </form>
             </div>
             <div class="twitters">
                 <TwootItem v-for="twoot in user.twoots" :key="twoot.id" :username="user.username" :twoot="twoot" @favourite="toggleFavourite" />
+               
             </div>
     </div>
 </template>
 <script>
-import TwootItem from './TwootItem.vue'
+import TwootItem from './TwootItem.vue';
        export default {
     name: "UserProfile",
     data() {
         return {
+            newTwootContent: '',
+            selectedTwootType: 'instant',
+            twootsType: [
+                {value: 'draft', name:"Draft"},
+                {value: 'instant', name:"Instant Twoot"},
+
+            ],
             follewers: 0,
             user: {
                 id: 1,
@@ -40,19 +67,31 @@ import TwootItem from './TwootItem.vue'
             }
         }
     },
-    computed:{
-        fullname(){
-            return `${this.user.fullname} ${this.user.lastname}`
+    computed: {
+        fullname() {
+            return `${this.user.firstName} ${this.user.lastName}`;
         },
     },
     methods: {
-        followers(){
+        followUser() {
             this.followers++;
+        },
+        toggleFavourite(id){
+            console.log(`Favourite tweet #${id}`)
+        },
+        createNewTwootContent(){
+            if(this.newTwootContent && this.selectedTwootType !== 'draft'){
+                   this.user.twoots.unshift({
+                    id: this.user.twoots.length + 1,
+                    content: this.newTwootContent
+                   }) 
+            }
         }
     },
     mounted() {
         this.followUser();
     },
+    components: { TwootItem }
 }
 </script>
 <style scoped>
@@ -85,7 +124,13 @@ import TwootItem from './TwootItem.vue'
         padding: 0.2rem;
         border-radius: 3px;
     }
+    .create-twoot{
+        border-top: 1px solid black;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
 
+    }
     @media screen and (max-width: 600px){
         .wrapper{
             flex-direction: column;
