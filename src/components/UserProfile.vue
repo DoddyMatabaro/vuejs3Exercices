@@ -8,20 +8,40 @@
                 <div><strong>Followers : </strong>1</div>
             </div>
             <div class="twitters">
-                <div class="twitter">
-                    <h3>user name</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
-                </div>
-
-                <div class="twitter">
-                    <h3>user name</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
-                </div>
+                <TwootItem v-for="twoot in user.twoots" :key="twoot.id" :username="user.username" :twoot="twoot" />
             </div>
     </div>
 </template>
 <script>
-        
+import TwootItem from './TwootItem.vue'
+       export default {
+    name: "UserProfile",
+    data() {
+        return {
+            follewers: 0,
+            user: {
+                id: 1,
+                username: "@_DoddyMatabaro",
+                firstName: "Doddy",
+                lastName: "Matabaro",
+                email: "matabarododdy@gmail.com",
+                isAdmin: true,
+                twoots: [
+                    { id: 1, content: "Twotter is Amazing" },
+                    { id: 2, content: "Don't forget to subsrciber to the Earth is Square" }
+                ]
+            }
+        };
+    },
+    watch: {
+        followers(newFollorCount, oldFollowerCount) {
+            if (oldFollowerCount < newFollorCount) {
+                console.log(this.user.username);
+            }
+        }
+    },
+    components: { TwootItem }
+}
 </script>
 <style scoped>
     .wrapper{
@@ -53,11 +73,7 @@
         padding: 0.2rem;
         border-radius: 3px;
     }
-    .twitter{
-        background-color: #fff;
-        padding: 1rem;
-        border-radius: 3px;
-    }
+
     @media screen and (max-width: 600px){
         .wrapper{
             flex-direction: column;

@@ -1,56 +1,43 @@
 <template>
-    <div class="main-container">
-              <div class="project-card" v-for="(items, index) in projectData.projectsArray" v-bind:key="items">
-                    <h2>{{projectData.projectsArray[index].Title}}</h2>
-                      <!-- <img :src="projectData.ProjectsArray[index].Image" alt=""> -->
-                        <p>{{projectData.projectsArray[index].About}}</p>
-                        <div class="links">
-                            <a :href="projectData.projectsArray[index].Link1"><img src="../assets/github.svg" alt="" target="_blank"></a>
-                            <a :href="projectData.projectsArray[index].Link2"><img src="../assets/github.svg" alt="" target="_blank"></a>
-                        </div>
-              </div>
-    </div>  
+         <div class="twitter">
+            <h3>{{username}}</h3>
+            <p>{{twoot.content}}</p>
+        </div>
 </template>
 
 <script>
-    import jsonData from "/projects.json";
- 
+    
     export default{
-        data() {
-            return {
-                projectData: jsonData
-            }
+       name: "TwootItem",
+       props: {
+        username:{
+            type: String,
+            required: true
         },
-    }
+        twoot: {
+            type:Object,
+            required: true
+        }
+       },
+       methods:{
+        favouriteTwoot(id){
+            this.$emit()
+        }
+       }
+    };
 </script>
 
 <style scoped>
-    .main-container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-
-    }
-
-    .project-card{
-        margin: 10px;
-        flex-wrap: 0 0 40%;
-        background-color: #fff;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-    }
-    .project-card img{
-        height: 10rem;
-    }
-    .links{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-end;
-    }
-    .links img{
-        height: 1.5rem;
-        margin: 5px;
-    }
+        .twitter{
+            background-color: #fff;
+            padding: 1rem;
+            border-radius: 3px;
+            border: 1px solid #DFE3EB;
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .twitter:hover{
+            transform: scale(1.1, 1.1);
+        }
 </style>
