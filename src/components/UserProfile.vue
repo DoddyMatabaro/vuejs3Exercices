@@ -8,7 +8,7 @@
                 <div><strong>Followers : </strong>1</div>
             </div>
             <div class="twitters">
-                <TwootItem v-for="twoot in user.twoots" :key="twoot.id" :username="user.username" :twoot="twoot" />
+                <TwootItem v-for="twoot in user.twoots" :key="twoot.id" :username="user.username" :twoot="twoot" @favourite="toggleFavourite" />
             </div>
     </div>
 </template>
@@ -40,7 +40,19 @@ import TwootItem from './TwootItem.vue'
             }
         }
     },
-    components: { TwootItem }
+    computed:{
+        fullname(){
+            return `${this.user.fullname} ${this.user.lastname}`
+        },
+    },
+    methods: {
+        followers(){
+            this.followers++;
+        }
+    },
+    mounted() {
+        this.followUser();
+    },
 }
 </script>
 <style scoped>

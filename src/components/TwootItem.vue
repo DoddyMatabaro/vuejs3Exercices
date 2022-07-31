@@ -1,5 +1,5 @@
 <template>
-         <div class="twitter">
+         <div class="twitter" @click="favouriteTwoot(twoot.id)">
             <h3>{{username}}</h3>
             <p>{{twoot.content}}</p>
         </div>
@@ -21,7 +21,7 @@
        },
        methods:{
         favouriteTwoot(id){
-            this.$emit()
+            this.$emit('favourite', id);
         }
        }
     };
