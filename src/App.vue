@@ -7,9 +7,9 @@ import UserProfile from "./components/UserProfile.vue"
 
 export default {
   name: 'App',
-  components: {
-    UserProfile,
-}
+    components: {
+      UserProfile,
+  }
 }
 </script>
 
@@ -20,5 +20,7 @@ export default {
   body{
       background-color: rgb(210, 205, 199);
   }
-   
+
+  
+
 </style>

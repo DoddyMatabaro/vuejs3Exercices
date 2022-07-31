@@ -2,7 +2,7 @@
     <div class="wrapper">
             <div class="user-card">
                 <strong>user name + fullname</strong>
-                <div class="fonction">
+                <div class="function">
                     Admin
                 </div>
                 <div><strong>Followers : </strong>1</div>
@@ -21,12 +21,12 @@
     </div>
 </template>
 <script>
-
+        
 </script>
 <style scoped>
     .wrapper{
         display: flex;
-        justify-content: center;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
         gap: 2.5rem;
@@ -39,11 +39,37 @@
         padding: 1.3rem;
         gap: 1rem;
         border-radius: 2px;
+    }    
+    .twitters{
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        gap: 1rem;
     }
-    
-    @media screen and (max-width: 789px){
-        .main-container{
-            width: 95%;
+    .function{
+        background-color: rgb(204, 0, 245);
+        color: #fff;
+        margin-right: auto;
+        padding: 0.2rem;
+        border-radius: 3px;
+    }
+    .twitter{
+        background-color: #fff;
+        padding: 1rem;
+        border-radius: 3px;
+    }
+    @media screen and (max-width: 600px){
+        .wrapper{
+            flex-direction: column;
         }
+        .user-card{
+            width: 90%;
+            justify-content: center;
+            align-items: center;
+        }
+        .function{
+            margin: 0;
+        }
+        
     }
 </style>
