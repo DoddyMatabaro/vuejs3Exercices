@@ -27,7 +27,7 @@
     };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
         .twitter{
             background-color: #fff;
             padding: 1rem;
@@ -36,8 +36,9 @@
             box-sizing: border-box;
             cursor: pointer;
             transition: all 0.25s ease;
-        }
-        .twitter:hover{
-            transform: scale(1.1, 1.1);
+      
+             &:hover{
+                transform: scale(1.1, 1.1);
+                 }
         }
 </style>
