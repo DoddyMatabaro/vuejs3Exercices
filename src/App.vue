@@ -17,10 +17,6 @@ export default {
   #app {
       /* background-color: rgb(210, 205, 199); */
   }
-  body{
-      background-color: rgb(210, 205, 199);
-  }
-
   
 
 </style>
