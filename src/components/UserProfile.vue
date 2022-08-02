@@ -1,70 +1,62 @@
 <template>
     <div class="wrapper">
             <div class="user-card">
-                <strong>{{user.username + " " + fullname}}`</strong>
-                <div class="function">
+                <strong>{{state.user.username }}`</strong>
+                <div class="function" v-if="state.user.isAdmin">
                     Admin
                 </div>
-                <div><strong>Followers : </strong>1</div>
-                <CreateTwootPanel />
+                <div><strong>Followers : </strong>{{state.followers}}</div>
+                <CreateTwootPanel @add-twoot="addTwoot" />
             </div>
             <div class="twitters">
-                <TwootItem v-for="twoot in user.twoots" :key="twoot.id" :username="user.username" :twoot="twoot" @favourite="toggleFavourite" />
-               
+                <TwootItem 
+                    v-for="twoot in state.user.twoots" 
+                    :key="twoot.id" 
+                    :username="state.user.username" 
+                    :twoot="twoot" 
+                 />
             </div>
     </div>
 </template>
 <script>
 import TwootItem from './TwootItem.vue';
 import CreateTwootPanel from './CreateTwootPanel.vue';
+import {reactive} from 'vue';
        export default {
-    name: "UserProfile",
-    data() {
-        return {
-            newTwootContent: '',
-            selectedTwootType: 'instant',
-            twootsType: [
-                {value: 'draft', name:"Draft"},
-                {value: 'instant', name:"Instant Twoot"},
+       name: "UserProfile",
+       setup(){
+            const state = reactive({
+                    newTwootContent: '',
+                    selectedTwootType: 'instant',
+                    twootsType: [
+                        {value: 'draft', name:"Draft"},
+                        {value: 'instant', name:"Instant Twoot"},
 
-            ],
-            follewers: 0,
-            user: {
-                id: 1,
-                username: "@_DoddyMatabaro",
-                firstName: "Doddy",
-                lastName: "Matabaro",
-                email: "matabarododdy@gmail.com",
-                isAdmin: true,
-                twoots: [
-                    { id: 1, content: "Twotter is Amazing" },
-                    { id: 2, content: "Don't forget to subsrciber to the Earth is Square" }
-                ]
+                    ],
+                    follewers: 0,
+                    user: {
+                        id: 1,
+                        username: "@_DoddyMatabaro",
+                        firstName: "Doddy",
+                        lastName: "Matabaro",
+                        email: "matabarododdy@gmail.com",
+                        isAdmin: true,
+                        twoots: [
+                            { id: 1, content: "Twotter is Amazing" },
+                            { id: 2, content: "Don't forget to subsrciber to the Earth is Square" }
+                        ]
+                    }
+            })
+
+            function addTwoot(twoot){
+                state.user.twoots.unshift({id: state.user.twoots.length + 1, content: twoot});
             }
-        };
-    },
-    watch: {
-        followers(newFollorCount, oldFollowerCount) {
-            if (oldFollowerCount < newFollorCount) {
-                console.log(this.user.username);
+            return{
+                state,
+                addTwoot
             }
-        }
-    },
-    computed: {
-        
-    },
-    methods: {
-        followUser() {
-            this.followers++;
-        },
-        toggleFavourite(id){
-            console.log(`Favourite tweet #${id}`)
-        },
-    
-    },
-    mounted() {
-        this.followUser();
-    },
+       },
+       
     components: { TwootItem, CreateTwootPanel }
 }
 </script>
@@ -84,7 +76,8 @@ import CreateTwootPanel from './CreateTwootPanel.vue';
                 width: 30%;
                 padding: 1.3rem;
                 gap: 1rem;
-                border-radius: 2px;
+                border-radius: 2px; 
+
 
             .function{
                 background-color: rgb(204, 0, 245);

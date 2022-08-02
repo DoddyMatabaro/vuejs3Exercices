@@ -5,7 +5,7 @@
               Twotter
           </div>
           <div class="user">
-            {{user.username}}
+            {{state.user.username}}
           </div>
       </nav>
       <UserProfile />
@@ -14,17 +14,24 @@
 
 <script>
 import UserProfile from "./components/UserProfile.vue"
+import {reactive} from 'vue';
 
 export default {
   name: 'App',
     components: {
       UserProfile,
   },
-  data(){
+
+  setup(){
+
+    const state = reactive({
+        user:{
+          username: '_DoddyMatabaero'
+        }
+    })
+
     return{
-      user:{
-        username: "_DoddyMatabaro",
-      }
+      state,
     }
   }
 }
