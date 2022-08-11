@@ -1,5 +1,4 @@
-{
-    "users":[
+export const users = [
         {
             "id": 1,
             "username": "_DoddyMatabaro",
@@ -14,7 +13,7 @@
         },
         {
             "id": 2,
-            "username": "_DoddyMatabaro",
+            "username": "_shako kinyamba",
             "firstName": "Doddy",
             "lastName": "Matabaro",
             "email": "doddymatabaro@gmail.com",
@@ -26,7 +25,7 @@
         },
         {
             "id": 3,
-            "username": "_DoddyMatabaro",
+            "username": "_gloire mutaliko",
             "firstName": "Doddy",
             "lastName": "Matabaro",
             "email": "doddymatabaro@gmail.com",
@@ -38,7 +37,7 @@
         },
         {
             "id": 4,
-            "username": "_DoddyMatabaro",
+            "username": "_Nasibu Val",
             "firstName": "Doddy",
             "lastName": "Matabaro",
             "email": "doddymatabaro@gmail.com",
@@ -50,7 +49,7 @@
         },
         {
             "id": 5,
-            "username": "_DoddyMatabaro",
+            "username": "_Cedrick Karangu",
             "firstName": "Doddy",
             "lastName": "Matabaro",
             "email": "doddymatabaro@gmail.com",
@@ -59,9 +58,10 @@
                 {"id": 1, "content": "Twotter is Amazing"},
                 {"id": 2, "content": "Don't forget to suscriber to the Earth is Square"}
             ]
-        },{
+        },
+        {
             "id": 6,
-            "username": "_DoddyMatabaro",
+            "username": "_John Doe",
             "firstName": "Doddy",
             "lastName": "Matabaro",
             "email": "doddymatabaro@gmail.com",
@@ -72,4 +72,3 @@
             ]
         }
     ]
-}

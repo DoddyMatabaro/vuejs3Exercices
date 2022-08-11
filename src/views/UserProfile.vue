@@ -1,7 +1,8 @@
 <template>
     <div class="wrapper">
             <div class="user-card">
-                <strong>{{state.user.username }}`</strong>
+                <strong>{{state.user.username }}</strong>
+                <h3>{{userId}}</h3>
                 <div class="function" v-if="state.user.isAdmin">
                     Admin
                 </div>
@@ -19,33 +20,19 @@
     </div>
 </template>
 <script>
-import TwootItem from './TwootItem.vue';
-import CreateTwootPanel from './CreateTwootPanel.vue';
-import {reactive} from 'vue';
+import TwootItem from '../components/TwootItem.vue';
+import { useRoute } from 'vue-router';
+import {users} from '../assets/users';
+import CreateTwootPanel from '../components/CreateTwootPanel.vue';
+import {reactive, computed} from 'vue';
        export default {
        name: "UserProfile",
        setup(){
-            const state = reactive({
-                    newTwootContent: '',
-                    selectedTwootType: 'instant',
-                    twootsType: [
-                        {value: 'draft', name:"Draft"},
-                        {value: 'instant', name:"Instant Twoot"},
-
-                    ],
+            const route = useRoute();
+            const userId = computed(()=>route.params.userId)
+             const state = reactive({
                     follewers: 0,
-                    user: {
-                        id: 1,
-                        username: "@_DoddyMatabaro",
-                        firstName: "Doddy",
-                        lastName: "Matabaro",
-                        email: "matabarododdy@gmail.com",
-                        isAdmin: true,
-                        twoots: [
-                            { id: 1, content: "Twotter is Amazing" },
-                            { id: 2, content: "Don't forget to subsrciber to the Earth is Square" }
-                        ]
-                    }
+                     user: users[userId.value - 1] || users[0], 
             })
 
             function addTwoot(twoot){
@@ -53,9 +40,10 @@ import {reactive} from 'vue';
             }
             return{
                 state,
-                addTwoot
+                addTwoot,
+                userId
             }
-       },
+       }, 
        
     components: { TwootItem, CreateTwootPanel }
 }

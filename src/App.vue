@@ -1,27 +1,24 @@
 <template>
    <div id="app">
       <nav>
-          <div class="logo">
-              Twotter
-          </div>
+          <router-link to="/">
+            <div class="logo">
+                Twotter
+            </div>
+          </router-link>
           <div class="user">
             {{state.user.username}}
           </div>
       </nav>
-      <UserProfile />
+      <router-view />
    </div>
 </template>
 
 <script>
-import UserProfile from "./components/UserProfile.vue"
 import {reactive} from 'vue';
 
 export default {
   name: 'App',
-    components: {
-      UserProfile,
-  },
-
   setup(){
 
     const state = reactive({
@@ -31,7 +28,7 @@ export default {
     })
 
     return{
-      state,
+      state
     }
   }
 }
